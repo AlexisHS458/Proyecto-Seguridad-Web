@@ -5,19 +5,29 @@ if(isset($_POST['nombre']) && isset($_POST['descripcion']) && isset($_POST['acci
 	if($_POST['accion']=='agregar'){
 		$Con = mysqli_connect("localhost","root","","tecweb");
 		$nombre=$_POST['nombre'];
+		//var_dump(filter_var($nombre,FILTER_SANITIZE_SPECIAL_CHARS));
 		$descripcion=$_POST['descripcion'];
-		$Query_agregar = "INSERT INTO estado(nombre,descripcion) VALUES ('".$nombre."','".$descripcion."')";
-        
-		if(mysqli_query($Con,$Query_agregar)){
-			$idNew = mysqli_insert_id($Con);
-			$resultado['estado']=1;
-			$resultado['mensaje']='Estado agregado con exito';
-			$resultado['id']=$idNew;
-		}else{
-			$resultado['estado']=0;
-			$resultado['mensaje']="Ocurrio un errror desconocido";
+		if (var_dump(filter_var($nombre,FILTER_SANITIZE_SPECIAL_CHARS)) &&
+			var_dump(filter_var($descripcion,FILTER_SANITIZE_SPECIAL_CHARS));){
+
+				$Query_agregar = "INSERT INTO estado(nombre,descripcion) VALUES ('".$nombre."','".$descripcion."')";
+				if(mysqli_query($Con,$Query_agregar)){
+					$idNew = mysqli_insert_id($Con);
+					$resultado['estado']=1;
+					$resultado['mensaje']='Estado agregado con exito';
+					$resultado['id']=$idNew;
+				}else{
+					$resultado['estado']=0;
+					$resultado['mensaje']="Ocurrio un errror desconocido";
+				}
+				mysqli_close($Con);
 		}
-		mysqli_close($Con);
+		else{
+			$resultado['estado']=0;
+			$resultado['mensaje']='Action no validad';
+		}
+
+
 
 	}else{
 		$resultado['estado']=0;
@@ -28,6 +38,7 @@ if(isset($_POST['nombre']) && isset($_POST['descripcion']) && isset($_POST['acci
 	$resultado['estado']=0;
 	$resultado['mensaje']='Faltan parametros';
 }
+
 
 echo json_encode($resultado);
 

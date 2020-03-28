@@ -22,10 +22,7 @@ function addEstado() {
 
     botonActualizar = '<button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-update">Actualizar</button>';
     botonEliminar = '<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger" onclick="identificaEliminar(' + id + ');">Eliminar</button>';
-    //acciones = agregar a la tabla 
-    // en esta padasa alert("estado: "+estado);
-    //en esta pasada alert("descripcion: "+descripcion);
-    //alert("Hola");
+
     $.ajax({
         url: '../pages/Actions/actionAddEstado.php',
         type: 'POST',
