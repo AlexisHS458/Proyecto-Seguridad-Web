@@ -1,6 +1,6 @@
 RewriteEngine On
 ErrorDocument 404 http://127.0.0.1/Proyecto-Seguridad-Web/pages/Errores/404.html
-
+ErrorDocument 500 http://127.0.0.1/Proyecto-Seguridad-Web/pages/Errores/500.html
 Order deny,allow
 
 
