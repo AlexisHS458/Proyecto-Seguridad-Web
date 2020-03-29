@@ -3,7 +3,6 @@ var idActualizar = 0;
 var practica;
 
 function addEstado() {
-    alert("Entro agregar estado");
     var tabla = $('#example1').DataTable();
     var id = 7;
     var botonActualizar;
@@ -25,7 +24,6 @@ function addEstado() {
     var entFederativa= $("#entFederativa").val();
     var unidadApre= $("#unidadApre").val();
     var nomProfesor= $("#nomProfesor").val();
-    var nomProfesor= $("#tipoPractica").chec
     
     var objetivo= $("#objetivo").val();  
     //Variables
@@ -58,15 +56,17 @@ function addEstado() {
             accion: 'agregar'
         },
         success: function (resultado) {
-            //alert(resultado);
-            alert("Se agrego la practica");
+        
             var resJSON = JSON.parse(resultado);
-
+            alert(resJSON);
             if (resJSON.estado == 1) {
+                alert(JSON.parse);
                 id = resJSON.id;
                 tabla.row.add([id, noPractica,nomEmpresa,nomProfesor,fecha,noAlumnos, nomProfesor, preAsignado, botonActualizar, botonEliminar]).draw().node().id = "row_" + id;
+            }else{
+                
             }
-            //alert(resJSON.mensaje);
+            
 
         },
         error: function (data) {

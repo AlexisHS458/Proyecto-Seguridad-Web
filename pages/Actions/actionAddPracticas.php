@@ -1,17 +1,18 @@
 <?php
 $resultado=array();
-//print_r($_POST);
+print_r($_POST);
 if(
     isset($_POST['programa']) && isset($_POST['noPractica']) &&
     isset($_POST['grupo']) && isset($_POST['fecha']) &&
-    isset($_POST['preAsignado']) && isset($_POST['nomEmpresa']) &&
+    isset($_POST['preAsignado'])  && isset($_POST['nomEmpresa']) &&
     isset($_POST['competencias']) && isset($_POST['estrategias']) &&
-    isset($_POST['semestre']) && isset($_POST['noAlumnos']) &&
+    isset($_POST['semestre'])  && isset($_POST['noAlumnos'])  &&
     isset($_POST['foranea']) && isset($_POST['entFederativa']) &&
     isset($_POST['unidadApre']) && isset($_POST['nomProfesor']) &&
-    isset($_POST['objetivo']) && isset($_POST['accion']) 
+    isset($_POST['objetivo']) && isset($_POST['accion'])
 ){
 	if($_POST['accion']=='agregar'){
+        print_r($_POST);
 		$Con = mysqli_connect("localhost","root","","tecweb");
         
 		$programa=$_POST['programa'];
@@ -35,7 +36,8 @@ if(
         
         $Query_agregar ="INSERT INTO practicas (fecha,total_alumnos,total_profesores,objetivo,competencias,estrategia,numero,presupuesto,institucion,profesor_id,programa_academico_id,tipo_id,estatus_id,razon_social) VALUES 
         ('".$fecha."','".$noAlumnos."','1','".$objetivo."','".$competencias."','".$estrategias."','".$noPractica."','".$preAsignado."','".$nomEmpresa."','".$nomProfesor."','".$programa."','".$foranea."','1','".$nomEmpresa."')";
-        echo  $Query_agregar;
+        
+        //echo '<script language="javascript">alert($Query_agregar);</script>';
         
 		//$Query_agregar = "INSERT INTO practicas(practica,programa_academico, razon_social,profesor, fecha,  talumnos,tprofesores,presupuesto) VALUES ('".$practica."','".$programa_academico."','".$razon_social."','".$profesor."','".$fecha."','".$talumnos."','".$tprofesores."','".$presupuesto."')";
         

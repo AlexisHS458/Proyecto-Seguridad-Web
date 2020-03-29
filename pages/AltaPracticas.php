@@ -1175,7 +1175,7 @@
                             <select class="form-control select2" style="width: 100%;" id="entFederativa">
                                 <?php
                                     while($fila=mysqli_fetch_array($resultado_consulta_estado)){
-                                        echo "<option value=.$fila[id].>".$fila['nombre']."</option>";
+                                        echo "<option value=$fila[id]>".$fila['nombre']."</option>";
                                     }
                                 ?>
 
@@ -1186,7 +1186,7 @@
                             <select class="form-control select2" style="width: 100%;" id="unidadApre">
                                 <?php
                                     while($fila=mysqli_fetch_array($resultado_consulta_u_aprendizaje)){
-                                        echo "<option value=.$fila[id].>".$fila['nombre']."</option>";
+                                        echo "<option value=$fila[id]>".$fila['nombre']."</option>";
                                     }
                                 ?>
 
@@ -1196,7 +1196,7 @@
                             <select class="form-control select2" style="width: 100%;" id="nomProfesor">
                                 <?php
                                     while($fila=mysqli_fetch_array($resultado_consulta_profesor)){
-                                        echo "<option value=".$fila['id'].">".$fila['nombre']."</option>";
+                                        echo "<option value=".$fila['nombre'].">".$fila['nombre']."</option>";
                                     }
                                 ?>
 
