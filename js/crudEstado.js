@@ -2,6 +2,7 @@
 //variables globales
 var idEliminar = 0;
 var idActualizar = 0;
+var esValido = false;
 
 function addEstado() {
     var tabla = $('#example1').DataTable();
@@ -23,29 +24,35 @@ function addEstado() {
     botonActualizar = '<button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-update">Actualizar</button>';
     botonEliminar = '<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger" onclick="identificaEliminar(' + id + ');">Eliminar</button>';
 
-    $.ajax({
-        url: '../pages/Actions/actionAddEstado.php',
-        type: 'POST',
-        data: {
-            nombre: estado,
-            descripcion: descripcion,
-            accion: 'agregar'
-        },
-        success: function (resultado) {
-            //alert(resultado);
-            alert("Se agrego la entidad federativa");
-            var resJSON = JSON.parse(resultado);
-
-            if (resJSON.estado == 1) {
-                id = resJSON.id;
-                tabla.row.add([id, estado, descripcion, botonActualizar, botonEliminar]).draw().node().id = "row_" + id;
+    validar(estado,descripcion);
+    if (esValido) {
+        $.ajax({
+            url: '../pages/Actions/actionAddEstado.php',
+            type: 'POST',
+            data: {
+                nombre: estado,
+                descripcion: descripcion,
+                accion: 'agregar'
+            },
+            success: function (resultado) {
+                //alert(resultado);
+                alert("Se agrego la entidad federativa");
+                var resJSON = JSON.parse(resultado);
+    
+                if (resJSON.estado == 1) {
+                    id = resJSON.id;
+                    tabla.row.add([id, estado, descripcion, botonActualizar, botonEliminar]).draw().node().id = "row_" + id;
+                }
+                //alert(resJSON.mensaje);
+            },
+            error: function () {
+    
             }
-            //alert(resJSON.mensaje);
-        },
-        error: function () {
-
-        }
-    });
+        });
+    } else {
+        alert("Ingresaste caracteres invalidos");
+    }
+   
 
 }
 
@@ -107,36 +114,43 @@ function updateEstado() {
     //alert("nuevo valor de descripcion: "+updateDescripcion);
 
     //$=Libreria de JQERY
-    $.ajax({
-        url: '../pages/Actions/actionUpdateEstado.php',
-        type: 'POST',
-        data: {
-            nombre: updateEstado,
-            descripcion: updateDescripcion,
-            id: id,
-            accion: 'actualizar'
-        },
-        success: function (resultado) {
-            var resJSON = JSON.parse(resultado);
-            if (resJSON.estado == 1) {
-
-                var temp = tabla.row('#row_' + id).data();
-                temp[1] = updateEstado;
-                temp[2] = updateDescripcion;
-
-                tabla.row('#row_' + id).data(temp).draw();
+    validar(updateEstado,updateDescripcion);
+    if (esValido) {
+        $.ajax({
+            url: '../pages/Actions/actionUpdateEstado.php',
+            type: 'POST',
+            data: {
+                nombre: updateEstado,
+                descripcion: updateDescripcion,
+                id: id,
+                accion: 'actualizar'
+            },
+            success: function (resultado) {
+                var resJSON = JSON.parse(resultado);
+                if (resJSON.estado == 1) {
+    
+                    var temp = tabla.row('#row_' + id).data();
+                    temp[1] = updateEstado;
+                    temp[2] = updateDescripcion;
+    
+                    tabla.row('#row_' + id).data(temp).draw();
+                }
+                //alert(resJSON.mensaje);
+                //alert(resultado);
+                alert("Se actualizo la entidad federativa");
+            },
+            error: function () {
+                alert("Existe un error de comunicacion");
             }
-            //alert(resJSON.mensaje);
-            //alert(resultado);
-            alert("Se actualizo la entidad federativa");
-        },
-        error: function () {
-            alert("Existe un error de comunicacion");
-        }
-    });
+        });
+    } else {
+        alert("Ingresaste caracteres invalidos");
+    }
+    
 }
-//var temp = tabla.row('#row_'+id).data();
-//temp= {1,"Aguascalientes",Ninguna};
 
-//function redEstado(){
-//alert("Muestra todos los Estados");
+
+function validar( estado, descripcion) {
+    const patron = new RegExp('^[A-Z]+$', 'i');
+    esValido = patron.test(estado) && patron.test(descripcion);    
+}

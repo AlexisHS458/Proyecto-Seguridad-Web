@@ -4,7 +4,7 @@ if(isset($_POST['nombre']) && isset($_POST['descripcion']) && isset($_POST['acci
 	//correcto
 	
 	if($_POST['accion']=='actualizar'){
-		$Con = mysqli_connect("localhost","root","","tecweb");
+	$Con = mysqli_connect("localhost","root","","tecweb");
 	$nombre=$_POST['nombre'];
 	$descripcion=$_POST['descripcion'];
 	$id=$_POST['id'];
