@@ -2,7 +2,7 @@
 $Resultado = array();
 if(isset($_POST['id']) && isset($_POST['accion'])){
 	if($_POST['accion']=="eliminar"){
-        $Con = mysqli_connect("localhost","root","","tecweb");
+        $Con = mysqli_connect("localhost","tecweb","1eYCekqNpYd3aKHN","tecweb");
         $id= $_POST['id'];
         $QueryEliminar='DELETE FROM practicas WHERE id='.$id;
         if(mysqli_query($Con,$QueryEliminar)){

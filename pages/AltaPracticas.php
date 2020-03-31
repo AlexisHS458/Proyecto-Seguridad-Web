@@ -15,7 +15,7 @@
   $bandRegitros=0;
   
   //1.- Conexión a la base de datos
- $Con = mysqli_connect("localhost","root","","tecweb");
+ $Con = mysqli_connect("localhost","tecweb","1eYCekqNpYd3aKHN","tecweb");
   //2.- Verificar que se ralizó la conexión
   if(mysqli_connect_errno()){
 
@@ -753,7 +753,7 @@
   $bandRegitros=0;
   
   //1.- Conexión a la base de datos
-  $Con = mysqli_connect("localhost","root","","tecweb");
+  $Con = mysqli_connect("localhost","tecweb","1eYCekqNpYd3aKHN","tecweb");
   //2.- Verificar que se ralizó la conexión
   if(mysqli_connect_errno()){
 
@@ -1010,7 +1010,7 @@
   $bandRegitros=0;
   
   //1.- Conexión a la base de datos
-  $Con = mysqli_connect("localhost","root","","tecweb");
+  $Con = mysqli_connect("localhost","tecweb","1eYCekqNpYd3aKHN","tecweb");
   //2.- Verificar que se ralizó la conexión
   if(mysqli_connect_errno()){
 

@@ -3,7 +3,7 @@ $resultado=array();
 print_r($_POST);
 if(isset($_POST['nombre']) && isset($_POST['descripcion']) && isset($_POST['accion'])){
 	if($_POST['accion']=='agregar'){
-		$Con = mysqli_connect("mysql2001.my-virtual-panel.com","galvanh_hector","mexamafia","galvanh_tecweb");
+		$Con = mysqli_connect("localhost","tecweb","1eYCekqNpYd3aKHN","tecweb");
 		$nombre=$_POST['nombre'];
 		$descripcion=$_POST['descripcion'];
 		$Query_agregar = "INSERT INTO semestre(nombre,descripcion) VALUES ('".$nombre."','".$descripcion."')";

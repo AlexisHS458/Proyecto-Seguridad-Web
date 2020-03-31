@@ -5,7 +5,7 @@ if(isset($_POST['objetivo']) && isset($_POST['porque']) && isset($_POST['descrip
 	//correcto
 	
 	if($_POST['accion']=='actualizar'){
-    $Con = mysqli_connect("localhost","root","","tecweb");
+    $Con = mysqli_connect("localhost","tecweb","1eYCekqNpYd3aKHN","tecweb");
 	
         $objetivo=$_POST['objetivo'];
         $porque=$_POST['porque'];

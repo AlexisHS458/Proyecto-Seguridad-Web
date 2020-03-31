@@ -3,7 +3,7 @@ $resultado=array();
 print_r($_POST);
 if(isset($_POST['nombre']) && isset($_POST['descripcion']) && isset($_POST['accion'])){
 	if($_POST['accion']=='agregar'){
-		$Con = mysqli_connect("localhost","root","","tecweb");
+		$Con = mysqli_connect("localhost","tecweb","1eYCekqNpYd3aKHN","tecweb");
 		$nombre=$_POST['nombre'];
 		$descripcion=$_POST['descripcion'];
 		$Query_agregar = "INSERT INTO grupo(nombre,descripcion) VALUES ('".$nombre."','".$descripcion."')";

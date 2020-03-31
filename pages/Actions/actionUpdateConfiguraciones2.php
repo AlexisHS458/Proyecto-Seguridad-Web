@@ -5,7 +5,7 @@ if(isset($_POST['jefeDepartamento']) && isset($_POST['directorEducacion']) && is
 	//correcto
 	
 	if($_POST['accion']=='actualizar'){
-    $Con = mysqli_connect("localhost","root","","tecweb");
+    $Con = mysqli_connect("localhost","tecweb","1eYCekqNpYd3aKHN","tecweb");
 	
         $jefeDepartamento=$_POST['jefeDepartamento'];
         $directorEducacion=$_POST['directorEducacion'];

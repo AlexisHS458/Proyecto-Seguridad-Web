@@ -13,7 +13,7 @@ if(
 ){
 	if($_POST['accion']=='agregar'){
         print_r($_POST);
-		$Con = mysqli_connect("localhost","root","","tecweb");
+		$Con = mysqli_connect("localhost","tecweb","1eYCekqNpYd3aKHN","tecweb");
         
 		$programa=$_POST['programa'];
         $noPractica=$_POST['noPractica'];

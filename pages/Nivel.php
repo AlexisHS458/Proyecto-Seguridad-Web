@@ -16,7 +16,7 @@
   $bandRegitros=0;
   
   //1.- Conexión a la base de datos
-  $Con = mysqli_connect("localhost","root","","tecweb") or die ();
+  $Con = mysqli_connect("localhost","tecweb","1eYCekqNpYd3aKHN","tecweb") or die ();
   //2.- Verificar que se ralizó la conexión
   if(mysqli_connect_errno()){
 

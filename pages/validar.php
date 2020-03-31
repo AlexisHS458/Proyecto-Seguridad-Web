@@ -4,7 +4,7 @@ $usuario=$_POST['usuario'];
 $clave=$_POST['clave'];
 
 //conectar a la base de datos
-$conexion=mysqli_connect("localhost","root","","tecweb") or die ();
+$conexion=mysqli_connect("localhost","tecweb","1eYCekqNpYd3aKHN","tecweb") or die ();
 
 //consulta
 $consulta=" SELECT * FROM administrador WHERE usuario= '$usuario' and clave='$clave' ";
