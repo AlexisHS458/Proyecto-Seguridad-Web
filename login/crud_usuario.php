@@ -9,7 +9,7 @@
 		//inserta los datos del usuario
 		public function insertar($usuario){
 			$db=DB::conectar();
-			$insert=$db->prepare('INSERT INTO USUARIOS VALUES(NULL,:nombre, :clave, :usuarios)');
+			$insert=$db->prepare('INSERT INTO USUARIOS VALUES(NULL,MD5(:nombre), :clave, :usuarios)');
 			$insert->bindValue('nombre',$usuario->getNombre());
 			$insert->bindValue('usuarios',$usuario->getUsuarios());
 			//encripta la clave
@@ -22,7 +22,7 @@
 		public function obtenerUsuario($nombre, $clave){
 			$db=Db::conectar();
 			$select=$db->prepare('SELECT * FROM USUARIOS WHERE nombre=:nombre');//AND clave=:clave
-			$select->bindValue('nombre',$nombre);
+			$select->bindValue('nombre',md5($nombre));
 			$select->execute();
 			$registro=$select->fetch();
 			$usuario=new Usuario();
@@ -41,7 +41,7 @@
 		public function buscarUsuario($nombre){
 			$db=Db::conectar();
 			$select=$db->prepare('SELECT * FROM USUARIOS WHERE nombre=:nombre');
-			$select->bindValue('nombre',$nombre);
+			$select->bindValue('nombre',md5($nombre));
 			$select->execute();
 			$registro=$select->fetch();
 			if($registro['Id']!=NULL){

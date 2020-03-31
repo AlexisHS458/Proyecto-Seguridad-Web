@@ -43,6 +43,9 @@
         $ResultadoNumCanc=mysqli_query($Con, $QueryNumCanc);
             
         $bandRegitros=1;
+        $QueryUsuario="SELECT  FROM practicas WHERE estatus_id='4' ;";
+        $ResultadoNumCanc=mysqli_query($Con, $QueryNumCanc);
+
   }
 ?>
 <!DOCTYPE html>
@@ -114,6 +117,7 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                
                                 <span class="hidden-xs">Alexander Pierce</span>
                             </a>
                             <ul class="dropdown-menu">
