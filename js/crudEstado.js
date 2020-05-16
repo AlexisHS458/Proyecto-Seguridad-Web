@@ -52,7 +52,6 @@ function addEstado() {
     } else {
         alert("Ingresaste caracteres invalidos");
     }
-   
 
 }
 

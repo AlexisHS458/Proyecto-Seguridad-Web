@@ -22,7 +22,7 @@ if(isset($_POST['nombre']) && isset($_POST['descripcion']) && isset($_POST['acci
 
 	}else{
 		$resultado['estado']=0;
-		$resultado['mensaje']='Action no validad';
+		$resultado['mensaje']='Acccion no valida';
 	}
 
 }else{
